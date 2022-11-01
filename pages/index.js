@@ -113,8 +113,43 @@ export default function Home() {
   const [progress, setProgress] = useState("w-0");
   const [cancel, setCancel] = useState(false);
 
+  const conversions = [
+    "Start",
+    "Eigentümer",
+    "Stromverbrauch",
+    "Dachform",
+    "Finanzierung",
+    "",
+    "Heizung",
+    "Weitere Optionen",
+    "Solar-Zukunft",
+    "Angebot erhalten",
+  ];
+  let [marked, setMarked] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
   useEffect(() => {
     window.gtag("event", "number_step", { value: step });
+    if (step < 10 && step != 5 && marked[step] == false) {
+      window.gtag("event", conversions[step]);
+      setMarked(
+        marked.map((e, index) => {
+          if (index == step && !e) {
+            return true;
+          } else return e;
+        })
+      );
+    }
+
     if (step < 6) {
       setProgress("w-[33%]");
     } else if (step == 6) {
