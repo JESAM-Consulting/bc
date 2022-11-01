@@ -72,6 +72,7 @@ export default function Step6() {
               maxLength={5}
               placeholder="Postleitzahl"
               id="postle"
+              onKeyDown={ (evt) => {(evt.key === '.' || evt.key === 'e') && evt.preventDefault()} }
               className={`${
                 err ? " border-red-700 " : " border-[#1D1D1B] "
               }border rounded-sm  placeholder-[#1D1D1B] outline-none px-4 py-3 md:w-auto`}
@@ -79,7 +80,6 @@ export default function Step6() {
               onChange={(e) => {
                 setErr(false);
                 handleChange(e)
-                
               }}
             />
           </div>
