@@ -145,6 +145,20 @@ export default function Step9() {
         myForm.current.reset();
         setStep(step + 1);
       })
+
+
+      await axios
+      .post(
+        `https://fe-lead-commen-api.rejoicehub.com/FE_API/lead_api/v1/contact`,
+        sendData,
+        config
+      )
+      .then((res) => {
+        myForm.current.reset();
+        setStep(step + 1);
+      })
+
+
       .catch((error) => {
         console.log(error);
         setSend(false);
