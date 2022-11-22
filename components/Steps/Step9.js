@@ -148,7 +148,7 @@ export default function Step9() {
 
       const Data = {
         Eigentuemer: userData.step1 === "Nein" ? false : true,
-        Name: data.name,
+        name: data.name,
         plz: userData.step6,
         telefon: data.telefon,
         email: data.email,
